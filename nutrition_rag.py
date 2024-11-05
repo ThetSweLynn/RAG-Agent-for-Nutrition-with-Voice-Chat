@@ -88,5 +88,3 @@ def process_llm_response(llm_response):
 def call_rag_agent(query):
     response = qa_chain.invoke(query)
     return process_llm_response(response)
-
-print(call_rag_agent("What is the nutritional value of an apple?"))
