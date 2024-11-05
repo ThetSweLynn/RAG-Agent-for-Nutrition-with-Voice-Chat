@@ -1,6 +1,6 @@
 # RAG-Agent-for-Nutrition-with-Voice-Chat
 
-Create .env file and store your Google Gemini API key to run the application.
+Create .env file and store your Google Gemini API key as "GOOGLE_API_KEY" to run the application.
 
 ## To edit the project, clone and test on your device. Don't push to the main. We will push only when the project is completely done.
 
