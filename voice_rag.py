@@ -20,26 +20,6 @@ mixer.init()
 today = str(date.today())
  
 # text to speech function
-''' 
-def speak_text(text):
-    
-    mp3audio = BytesIO() 
-    
-    tts = gTTS(text, lang='en-US', tld = 'us')     
-    
-    tts.write_to_fp(mp3audio)
-
-    mp3audio.seek(0)
-
-    mixer.music.load(mp3audio, "mp3")
-    mixer.music.play()
-
-    while mixer.music.get_busy():
-        pass
-    
-    mp3audio.close()
-'''
-
 def speak_text(text):
     try:
         # Preprocess the text to handle special characters and length
