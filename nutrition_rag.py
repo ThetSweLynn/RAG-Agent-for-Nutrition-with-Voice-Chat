@@ -18,6 +18,7 @@ from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain.chains import RetrievalQA
+from langchain.memory import ConversationBufferMemory
 
 
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
@@ -55,13 +56,15 @@ retriever = vectordb.as_retriever(search_kwargs={"k":5})  # Retrieve top 5
 #Retrieval QA
 llm = ChatGoogleGenerativeAI(model='gemini-1.5-pro', temperature=0.7)
 
+memory = ConversationBufferMemory(memory_key="chat_history")
 
 # Set up RetrievalQA with memory context
 qa_chain = RetrievalQA.from_chain_type(
     llm=llm,
     chain_type="stuff",
     retriever=retriever,
-    return_source_documents=True
+    memory = memory,
+    return_source_documents=False
 )
 
 ## Cite sources
@@ -86,5 +89,16 @@ def process_llm_response(llm_response):
 
 # To call the RAG agent
 def call_rag_agent(query):
-    response = qa_chain.invoke(query)
-    return process_llm_response(response)
+    # Retrieve memory history and append it to the query to retain conversational context
+    conversation_history = memory.load_memory_variables({})["chat_history"]
+    modified_query = f"{conversation_history}\n\nUser: {query}"
+
+    response = qa_chain.invoke(modified_query)
+    final_response = process_llm_response(response)
+    return final_response
+
+#testing
+
+print(call_rag_agent("Hello, my name is Lin. My favorite food is pizza."))
+print(call_rag_agent("Can you tell me how many letters are there in my favorite food?"))
+print(call_rag_agent("Do you remember my name?"))
