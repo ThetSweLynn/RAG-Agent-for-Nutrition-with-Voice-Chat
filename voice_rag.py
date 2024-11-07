@@ -1,12 +1,3 @@
-#chcp 65001
-#Type this ⬆️ first before running if you are using Windows 
-#⬆️⬆️ This is just for Chinese characters to display properly in the console
-
-
-# Google Gemini-Powered Real-Time Language Translator with Audio
-# Tested and working on Windows 11. 
-# By TechMakerAI on YouTube
-# 
 import speech_recognition as sr
 from gtts import gTTS
 from io import BytesIO
@@ -97,7 +88,7 @@ def main():
 
                     print('Bye now')
 
-                    continue
+                    break
                                        
                 # Send user input to Gemini model and receive response
                 append2log(f"You: {request}\n")
