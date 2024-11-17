@@ -103,8 +103,7 @@ def process_llm_response(llm_response):
 
     # Combine the main response with the source information
     final_response_with_sources = final_response + source_info
-    print(final_response_with_sources)
-    
+
     return final_response_with_sources
 
 # RAG Agent Function
@@ -127,7 +126,14 @@ def call_rag_agent(query):
     conversation_history = memory.get_history()
 
     # Step 3: Construct the prompt using the retrieved context and conversation history
+    custom_prompt = (
+        "You are an AI nutritionist with expertise in dietary recommendations and nutritional science. "
+        "Answer user queries concisely, providing evidence-based insights. "
+        "Cite sources where relevant and avoid speculative statements."
+    )
+    
     prompt = (
+        f"{custom_prompt}\n"
         f"{context_info}\n"
         f"Previous Conversation:\n{conversation_history}\n"
         f"User Query: {query}\nAI:"
