@@ -1,45 +1,70 @@
-You: I am 21 years old boy and weigh 130 pounds. I am trying to gain more weights. Can you recommend personalized meals for me? 
-AI: Your weight of 130 pounds translates to about 59 kg.  To gain weight, you need to consume more calories than
-you expend.  A personalized meal plan requires more information about your current dietary habits, activity
-level, and any underlying health conditions. However, I can offer some general guidelines and examples:
-
-**General Recommendations:**
-
-* **Increase Caloric Intake:** Aim for a surplus of 250-500 calories per day.  This can be achieved by
-increasing portion sizes and eating more frequently.
-* **Prioritize Protein:**  Consume 1.6-2.2 grams of protein per kilogram of body weight (94-131 grams for you)
-to support muscle growth. Good sources include those listed in your provided data: chicken, fish, lean red
-meat, eggs, tofu, tempeh, lentils, quinoa, etc.
-* **Healthy Fats:** Include sources like avocados, nuts, seeds, and olive oil for calorie density and overall
-health.
-* **Carbohydrates:** Choose complex carbohydrates like whole grains, fruits, and vegetables for sustained
-energy.
-
-**Sample Meal Ideas (adjust portions based on your needs):**
-
-* **Breakfast:** Oatmeal with protein powder, berries, and nuts; Scrambled eggs with whole-wheat toast and
-avocado.
-* **Lunch:** Chicken breast salad sandwich on whole-grain bread; Lentil soup with a side of whole-grain bread.
-* **Dinner:** Salmon with roasted vegetables and quinoa; Tofu stir-fry with brown rice.
-* **Snacks:** Greek yogurt with fruit and granola; Trail mix with nuts and seeds; Protein shake.
-
-**Important Considerations:**
-
-* **Consult a Registered Dietitian:** For truly personalized guidance, it's best to consult a registered
-dietitian or nutritionist. They can create a tailored plan based on your individual needs and preferences.
-* **Strength Training:** Combine your increased caloric intake with regular strength training exercises to
-promote muscle growth and weight gain.
-* **Gradual Increase:**  Gradually increase your calorie and protein intake to avoid digestive discomfort.
-* **Monitor Progress:** Track your weight and adjust your plan accordingly.
-
-It's important to focus on nutrient-dense foods and make sustainable lifestyle changes for long-term healthy
-weight gain.
+You: What is the nutritional value of an apple?
+AI: The provided text does not contain the specific nutritional value of an apple beyond mentioning it is suitable
+for serving as such or making jelly, sauce and pies.  It does suggest buying apples in season for better
+flavor and texture.  More detailed nutritional information would need to be sourced elsewhere.
 
 
 Sources:
-1. Nutrition Data\Copy of PHYSICAL FITNESS module.pdf
-2. Nutrition Data\Dietary advice with or without oral nutritional supplements for disease‐related malnutrition in adults.pdf
+1. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
+2. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
 3. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
-4. Nutrition Data\Dietary advice with or without oral nutritional supplements for disease‐related malnutrition in adults.pdf
+4. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
 5. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
+
+You: I'm 22 years old male with 130 pounds. I want to gain weight. Can you give me work out plan and food recommadation?
+AI: The provided texts offer general calorie recommendations for a 22-year-old male but don't include specific
+workout plans.  To gain weight, you need to consume more calories than you expend.  A moderately active
+22-year-old male needs around 2800 kcal/day (source: *MAKE CALORIES COUNT* table).  Since you are aiming to
+gain weight, you will need to exceed this amount.
+
+A balanced approach is crucial, combining increased caloric intake with an appropriate exercise program
+focusing on resistance training to build muscle mass.  Consult a certified personal trainer or strength and
+conditioning specialist for a tailored workout plan.  Additionally, it is important to consult a registered
+dietitian or nutritionist to create a personalized meal plan that aligns with your specific needs and goals.
+The information provided here is not a substitute for professional advice.
+
+
+Sources:
+1. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
+2. Nutrition Data\UK Myprotein-Home-HIIT-Guide.pdf
+3. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
+4. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
+5. Nutrition Data\Copy of PHYSICAL FITNESS module.pdf
+
+You: my name is Sai. remember that
+AI: Understood. I will remember your name is Sai.  How can I help you today?
+
+
+Sources:
+1. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
+2. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
+3. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
+4. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
+5. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
+
+You: give me 3 food that contain vitamin c
+AI: Three foods rich in Vitamin C are:
+
+1. **Amla (Indian Gooseberry):**  A rich source, containing significantly more Vitamin C than citrus fruits.
+2. **Guava:**  Another excellent source, with high levels of Vitamin C.
+3. **Oranges:** A good source of Vitamin C, readily available in many parts of the world.
+
+
+Sources:
+1. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
+2. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
+3. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
+4. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
+5. Nutrition Data\fundamentals-of-foodnutrition-and-diet-therapy.pdf
+
+You: What is my name
+AI: Your name is Sai.
+
+
+Sources:
+1. Nutrition Data\Dietary advice with or without oral nutritional supplements for disease‐related malnutrition in adults.pdf
+2. Nutrition Data\Dietary advice with or without oral nutritional supplements for disease‐related malnutrition in adults.pdf
+3. Nutrition Data\Dietary advice with or without oral nutritional supplements for disease‐related malnutrition in adults.pdf
+4. Nutrition Data\Dietary advice with or without oral nutritional supplements for disease‐related malnutrition in adults.pdf
+5. Nutrition Data\Dietary advice with or without oral nutritional supplements for disease‐related malnutrition in adults.pdf
 

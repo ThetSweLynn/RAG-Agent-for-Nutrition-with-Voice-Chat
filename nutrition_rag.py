@@ -49,6 +49,7 @@ retriever = vectordb.as_retriever(search_kwargs={"k":5})
 llm = ChatGoogleGenerativeAI(model='gemini-1.5-pro', temperature=0.7)
 
 # Custom Memory Handler
+# Custom Memory Handler
 class FileBasedMemory:
     def __init__(self, memory_file='chat_history.json'):
         self.memory_file = memory_file
@@ -61,8 +62,9 @@ class FileBasedMemory:
         return []
 
     def save_memory(self):
+        # Save the history with indentation for better readability
         with open(self.memory_file, 'w') as file:
-            json.dump(self.history, file)
+            json.dump(self.history, file, indent=4)
 
     def append_to_history(self, user_input, bot_response):
         self.history.append({'user': user_input, 'bot': bot_response})
