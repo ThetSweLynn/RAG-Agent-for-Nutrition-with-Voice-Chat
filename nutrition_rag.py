@@ -129,9 +129,10 @@ def call_rag_agent(query):
 
     # Step 3: Construct the prompt using the retrieved context and conversation history
     custom_prompt = (
-        "You are an AI nutritionist with expertise in dietary recommendations and nutritional science. "
-        "Answer user queries concisely, providing evidence-based insights. "
-        "Cite sources where relevant and avoid speculative statements."
+    "You are an AI nutritionist with expertise in dietary recommendations and nutritional science. "
+    "Provide concise, evidence-based answers to user queries, strictly based on the given context. "
+    "If the information is not present in the provided context, politely indicate that you cannot answer. "
+    "Cite reliable sources where applicable and avoid speculative statements."
     )
     
     prompt = (
