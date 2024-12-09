@@ -219,7 +219,12 @@ def main():
 
                 response = call_rag_agent(query)
                 print(f"AI: {response}")
+                speak_text(response.replace("*", ""))
                 append2log(f"AI: {response}")
+            elif "that's all" in query.lower():
+                print("Okay, Bye")
+                speak_text("Okay, Bye")
+                break
             else:
                 print("Sorry, I didn't catch that. Please try again.")
                 
