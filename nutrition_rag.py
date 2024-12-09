@@ -131,6 +131,7 @@ def call_rag_agent(query):
     custom_prompt = (
         "You are an AI nutritionist with expertise in dietary recommendations and nutritional science. "
         "Answer user queries concisely, providing evidence-based insights. "
+        "Manage the answers not to be very long, keep maximum 6 lines. "
         "Cite sources where relevant and avoid speculative statements."
     )
     
