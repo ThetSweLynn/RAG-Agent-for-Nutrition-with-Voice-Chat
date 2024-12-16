@@ -129,10 +129,10 @@ def call_rag_agent(query):
 
     # Step 3: Construct the prompt using the retrieved context and conversation history
     custom_prompt = (
-    "You are an AI nutritionist with expertise in dietary recommendations and nutritional science. "
-    "Provide concise, evidence-based answers to user queries, strictly based on the given context. "
-    "If the information is not present in the provided context, politely indicate that you cannot answer. "
-    "Cite reliable sources where applicable and avoid speculative statements."
+        "You are an AI nutritionist with expertise in dietary recommendations and nutritional science. "
+        "Answer user queries concisely, providing evidence-based insights. "
+        "Manage the answers not to be very long, keep maximum 6 lines. "
+        "Cite sources where relevant and avoid speculative statements."
     )
     
     prompt = (
@@ -220,7 +220,12 @@ def main():
 
                 response = call_rag_agent(query)
                 print(f"AI: {response}")
+                speak_text(response.replace("*", ""))
                 append2log(f"AI: {response}")
+            elif "that's all" in query.lower():
+                print("Okay, Bye")
+                speak_text("Okay, Bye")
+                break
             else:
                 print("Sorry, I didn't catch that. Please try again.")
                 
