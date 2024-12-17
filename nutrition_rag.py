@@ -49,7 +49,6 @@ retriever = vectordb.as_retriever(search_kwargs={"k":5})
 llm = ChatGoogleGenerativeAI(model='gemini-1.5-pro', temperature=0.7)
 
 # Custom Memory Handler
-# Custom Memory Handler
 class FileBasedMemory:
     def __init__(self, memory_file='chat_history.json'):
         self.memory_file = memory_file
@@ -62,7 +61,6 @@ class FileBasedMemory:
         return []
 
     def save_memory(self):
-        # Save the history with indentation for better readability
         with open(self.memory_file, 'w') as file:
             json.dump(self.history, file, indent=4)
 
@@ -91,20 +89,14 @@ def wrap_text_preserve_newlines(text, width=110):
     return '\n'.join(wrapped_lines)
 
 def process_llm_response(llm_response):
-    """
-    Process the LLM response, including wrapping text and adding source information.
-    Handles cases where no sources are relevant or available.
-    """
-    # Extract and wrap the main response text
     final_response = wrap_text_preserve_newlines(llm_response.get('result', 'No response generated.'))
     
-    # Handle source document information
     source_info = "\n\nSources:\n"
     if 'source_documents' in llm_response and llm_response["source_documents"]:
         relevant_sources = [
             source.metadata.get('source', 'Unknown Source')
             for source in llm_response["source_documents"]
-            if source.metadata.get('relevance_score', 0) > 0.5  # Example score threshold
+            if source.metadata.get('relevance_score', 0) > 0.5
         ]
         if relevant_sources:
             for i, source_name in enumerate(relevant_sources):
@@ -114,29 +106,23 @@ def process_llm_response(llm_response):
     else:
         source_info += "No sources found.\n"
 
-    # Combine the main response with the source information
     final_response_with_sources = final_response + source_info
 
     return final_response_with_sources
 
 # RAG Agent Function
 def call_rag_agent(query):
-    # Step 1: Retrieve relevant chunks from vector store
     try:
         retrieved_docs = retriever.invoke(query)
     except Exception as e:
         print(f"Error during retrieval: {e}")
         retrieved_docs = []
 
-    # Step 2: Filter documents for relevance (e.g., based on content or a threshold)
     relevant_docs = []
     for doc in retrieved_docs:
-        # Check if the content of the document appears relevant
-        # Here, adjust the criteria as needed based on your use case
         if query.lower() in doc.page_content.lower() or len(doc.page_content.strip()) > 50:
             relevant_docs.append(doc)
 
-    # Extract text from relevant documents, or notify if no relevant text is found
     if relevant_docs:
         retrieved_text = "\n".join([doc.page_content for doc in relevant_docs[:3]])
         context_info = f"Here is some information from your Nutrition Data PDFs that might help:\n{retrieved_text}\n"
@@ -145,10 +131,8 @@ def call_rag_agent(query):
         context_info = "No relevant information found in Nutrition Data PDFs.\n"
         include_sources = False
 
-    # Step 3: Get conversation history
     conversation_history = memory.get_history()
 
-    # Step 4: Construct the prompt using the retrieved context and conversation history
     custom_prompt = (
         "You are an AI nutritionist with expertise in dietary recommendations and nutritional science. "
         "Answer user queries concisely, providing evidence-based insights. "
@@ -163,10 +147,8 @@ def call_rag_agent(query):
         f"User Query: {query}\nAI:"
     )
 
-    # Step 5: Get the LLM response
     response = qa_chain.invoke(prompt)
 
-    # Step 6: Process response to include source information (only if relevant)
     final_response = wrap_text_preserve_newlines(response['result'])
     if include_sources and 'source_documents' in response and response["source_documents"]:
         source_info = "\n\nSources:\n"
@@ -175,7 +157,6 @@ def call_rag_agent(query):
             source_info += f"{i + 1}. {source_name}\n"
         final_response += source_info
 
-    # Step 7: Save conversation to memory
     memory.append_to_history(query, final_response)
 
     return final_response
@@ -207,13 +188,6 @@ def speak_text(text):
     except Exception as e:
         print(f"Error speaking text: {e}")
 
-# Logging Function
-def append2log(text):
-    global today
-    fname = f'chatlog-{today}.txt'
-    with open(fname, "a", encoding='utf-8') as f:
-        f.write(text + "\n")
-
 # Speech Recognition Function
 def listen_for_audio():
     recognizer = sr.Recognizer()
@@ -232,43 +206,3 @@ def listen_for_audio():
     except Exception as e:
         print("Error recognizing speech:", e)
         return None
-
-# Main Function
-def main():
-    choice = input("Choose input method: (1) Audio (2) Text\n")
-    
-    if choice == "1":
-        while True:
-            print("Please speak your query:")
-            query = listen_for_audio()
-            if query:
-                print(f"You: {query}")
-                append2log(f"You: {query}")
-
-                response = call_rag_agent(query)
-                print(f"AI: {response}")
-                speak_text(response.replace("*", ""))
-                append2log(f"AI: {response}")
-            elif "that's all" in query.lower():
-                print("Okay, Bye")
-                speak_text("Okay, Bye")
-                break
-            else:
-                print("Sorry, I didn't catch that. Please try again.")
-                
-    elif choice == "2":
-        while True:
-            query = input("Please type your query: ")
-            if query.lower() == "exit":
-                print("Exiting...")
-                break
-            append2log(f"You: {query}")
-
-            response = call_rag_agent(query)
-            print(f"AI: {response}")
-            append2log(f"AI: {response}")
-    else:
-        print("Invalid choice. Please restart and select a valid option.")
-
-if __name__ == "__main__":
-    main()
