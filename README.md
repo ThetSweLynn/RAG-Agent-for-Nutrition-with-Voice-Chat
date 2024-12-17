@@ -4,8 +4,8 @@ Create .env file and store your Google Gemini API key as "GOOGLE_API_KEY" to run
 
 ___
 
-* python nutrition_rag.py : Use this command to test rag alone without voice chate here
+* Step-1: Run the app.py file to run as API
+* Step-2: Run the flutter app using "flutter run" in the rag_flutter_app folder
 
-* python voice_rag.py : Use this command to test the whole application with voice chat
-
-🎉 🎉 🎉
+>> Voice chat not available yet in the flutter app
+>> You can test the voice chat in the nutrition_rag.py file from "vikhadr" branch
