@@ -2,7 +2,7 @@ runtime: python39  # Specify the Python version
 entrypoint: gunicorn -b :$PORT app:app  # Use Gunicorn to serve Flask
 
 env_variables:
-  GOOGLE_API_KEY: AIzaSyAnp-OK7Y2Vdb526wV21JqF3iNtWQSwN0M # Store your API key here
+  GOOGLE_API_KEY: os.environ.get("GOOGLE_API_KEY") # Store your API key here
 
 handlers:
 - url: /static
