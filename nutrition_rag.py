@@ -111,7 +111,51 @@ def process_llm_response(llm_response):
     return final_response_with_sources
 
 # RAG Agent Function
+# New Method: Answer Questions Without Sources
 def call_rag_agent(query):
+    try:
+        retrieved_docs = retriever.invoke(query)
+    except Exception as e:
+        print(f"Error during retrieval: {e}")
+        retrieved_docs = []
+
+    relevant_docs = []
+    for doc in retrieved_docs:
+        if query.lower() in doc.page_content.lower() or len(doc.page_content.strip()) > 50:
+            relevant_docs.append(doc)
+
+    if relevant_docs:
+        retrieved_text = "\n".join([doc.page_content for doc in relevant_docs[:3]])
+        context_info = f"Here is some information from your Nutrition Data PDFs that might help:\n{retrieved_text}\n"
+    else:
+        context_info = "No relevant information found in Nutrition Data PDFs.\n"
+
+    conversation_history = memory.get_history()
+
+    custom_prompt = (
+        "You are an AI lfestyle improvement assistant with expertise in dietary recommendations and workout planning. "
+        "Answer user queries concisely, providing evidence-based insights. "
+        "Keep the answers brief, with a maximum of 6 lines. "
+        "Avoid speculative statements."
+    )
+
+    prompt = (
+        f"{custom_prompt}\n"
+        f"{context_info}\n"
+        f"Previous Conversation:\n{conversation_history}\n"
+        f"User Query: {query}\nAI:"
+    )
+
+    response = qa_chain.invoke(prompt)
+
+    # Exclude sources from the response
+    final_response = wrap_text_preserve_newlines(response['result'])
+    memory.append_to_history(query, final_response)
+
+    return final_response
+
+"""
+def call_rag_agent_with_sources(query):
     try:
         retrieved_docs = retriever.invoke(query)
     except Exception as e:
@@ -160,6 +204,7 @@ def call_rag_agent(query):
     memory.append_to_history(query, final_response)
 
     return final_response
+""" 
 
 # Text-to-Speech Function
 def speak_text(text):
@@ -187,7 +232,7 @@ def speak_text(text):
                     pass
     except Exception as e:
         print(f"Error speaking text: {e}")
-
+        
 # Speech Recognition Function
 def listen_for_audio():
     recognizer = sr.Recognizer()
