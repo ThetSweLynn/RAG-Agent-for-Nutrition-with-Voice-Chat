@@ -12,6 +12,8 @@ dependencies:
     sdk: flutter
   http: ^1.2.2
   cupertino_icons: ^1.0.8
+  flutter_sound: ^9.2.13+1
+  permission_handler: ^10.3.0
 
 dev_dependencies:
   flutter_test:

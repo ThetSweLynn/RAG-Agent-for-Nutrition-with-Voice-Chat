@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/api_service.dart';
+import 'voice_chat_screen.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -87,14 +88,23 @@ class _ChatPageState extends State<ChatPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 35.0),
+            padding: const EdgeInsets.only(left: 10.0, right: 15.0, bottom: 35.0),
             child: Row(
               children: [
+                IconButton(
+                  icon: const Icon(Icons.mic_none, color: Colors.redAccent),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => VoiceChatScreen()),
+                    );
+                  },
+                ),
                 Expanded(
                   child: TextField(
                     controller: _controller,
                     decoration: InputDecoration(
-                      hintText: 'Ask something...',
+                      hintText: 'Ask something.....',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                       ),
@@ -103,9 +113,10 @@ class _ChatPageState extends State<ChatPage> {
                     ),
                   ),
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(width: 30), // Add more spacing before send button
                 CircleAvatar(
                   backgroundColor: const Color(0xFF008080),
+                  radius: 24, // Optional: Adjust size of the send button for prominence
                   child: IconButton(
                     icon: const Icon(Icons.arrow_upward, color: Colors.white),
                     onPressed: _sendMessage,
