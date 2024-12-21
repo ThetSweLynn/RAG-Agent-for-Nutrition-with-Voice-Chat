@@ -107,7 +107,7 @@ class _ChatPageState extends State<ChatPage> {
                 CircleAvatar(
                   backgroundColor: const Color(0xFF008080),
                   child: IconButton(
-                    icon: const Icon(Icons.send, color: Colors.white),
+                    icon: const Icon(Icons.arrow_upward, color: Colors.white),
                     onPressed: _sendMessage,
                   ),
                 ),

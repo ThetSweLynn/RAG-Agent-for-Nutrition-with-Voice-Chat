@@ -16,7 +16,7 @@ class IntroductionPage extends StatelessWidget {
               'Welcome to your Personal Lifestyle Assistant',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 28,
+                fontSize: 30,
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF008080),
               ),
@@ -30,7 +30,7 @@ class IntroductionPage extends StatelessWidget {
             const Text(
               'Ask questions, get recommendations, and manage your nutrition and workout plans efficiently.',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 15),
             ),
             const SizedBox(height: 40),
             ElevatedButton(

@@ -86,7 +86,7 @@ qa_chain = RetrievalQA.from_chain_type(
 def wrap_text_preserve_newlines(text, width=110):
     lines = text.split('\n')
     wrapped_lines = [textwrap.fill(line, width=width) for line in lines]
-    return '\n'.join(wrapped_lines)
+    return '\n'.join(wrapped_lines).rstrip('\n')
 
 def process_llm_response(llm_response):
     final_response = wrap_text_preserve_newlines(llm_response.get('result', 'No response generated.'))
